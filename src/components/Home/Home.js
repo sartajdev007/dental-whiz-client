@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
+import { FaTooth } from 'react-icons/fa'
 
 
 
@@ -19,15 +20,16 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            <div className='my-10'>
+            <div className='my-10 px-5'>
                 <div>
                     <h1 className='text-5xl text-teal-400 font-bold'>Determined to Bring <br /> <span className='text-fuchsia-600'>Happiness</span></h1>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3'>
                     {
-                        sliceServices.map(sliced =>
-                            <div className="card my-10 card-compact w-96 bg-base-100 shadow-xl">
-                                <figure className='w-full max-h-64'><img src={sliced.img} alt="" /></figure>
+                        sliceServices.map((sliced, index) =>
+                            <div key={sliced._id} className="card my-10 card-compact w-96 bg-base-100 shadow-xl">
+                                <figure className='w-full max-h-64 relative'><img src={sliced.img} alt="" /></figure>
+                                <div className='absolute top-56 right-10 bg-white p-3 shadow-xl'><FaTooth className='text-3xl text-pink-500'></FaTooth></div>
                                 <div className="card-body">
                                     <h2 className="card-title">{sliced.name}</h2>
                                     <div className="card-actions justify-end">
@@ -37,7 +39,7 @@ const Home = () => {
                             </div>)
                     }
                 </div>
-                <button className='btn bg-teal-600'><Link to='/services'>More Services</Link></button>
+                <button className='btn bg-teal-600 border-0'><Link to='/services'>More Services</Link></button>
             </div>
         </div>
     );
