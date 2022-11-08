@@ -20,12 +20,12 @@ const Header = () => {
                         {navMenu}
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-2xl font-bold">
-                    <span className='text-teal-500'>Dental</span><span className='text-fuchsia-500'>Whiz</span>
+                <Link to='/' className="btn btn-ghost normal-case text-2xl">
+                    <span className='text-teal-500 font-bold'>Dental</span><span className='text-fuchsia-500 font-semibold'>Whiz</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal p-0">
+                <ul className="menu menu-horizontal p-0 bg-base">
                     {navMenu}
                 </ul>
             </div>

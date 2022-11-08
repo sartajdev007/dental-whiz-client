@@ -1,10 +1,3 @@
-@font-face {
-  font-family: "medium";
-  /*Can be any text*/
-  src: local("Roboto-Medium"),
-    url("./fonts/Roboto-Medium.ttf") format("truetype");
-}
-
 .App {
   text-align: center;
 }
