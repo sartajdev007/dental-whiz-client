@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Dental Crown",
+        "price": "100.00",
+        "img": "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    },
+    {
+        "name": "Dentures",
+        "price": "150.00",
+        "img": "https://images.unsplash.com/photo-1609840113929-b130355987e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+    },
+    {
+        "name": "Smile Makeover",
+        "price": "100.00",
+        "img": "https://images.unsplash.com/photo-1508002366005-75a695ee2d17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=368&q=80"
+    }
+]

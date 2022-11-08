@@ -1,9 +1,11 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const Services = () => {
+    const services = useLoaderData()
     return (
         <div>
-            Services
+            Services: {services.length}
         </div>
     );
 };
