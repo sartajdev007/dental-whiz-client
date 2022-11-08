@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "medium";
+  /*Can be any text*/
+  src: local("Roboto-Medium"),
+    url("./fonts/Roboto-Medium.ttf") format("truetype");
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +39,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
