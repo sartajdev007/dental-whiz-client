@@ -21,9 +21,10 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            {/* service section */}
             <div className='my-10 mx-5'>
                 <div>
-                    <h1 className='text-5xl text-teal-400 font-bold'>Determined to Bring <br /> <span className='text-fuchsia-600'>Happiness</span></h1>
+                    <h1 className='text-5xl text-teal-400 font-bold'>Committed to Bring <br /> <span className='text-fuchsia-600'>Happiness</span></h1>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3'>
                     {
@@ -33,7 +34,21 @@ const Home = () => {
                                 <div className='absolute top-56 right-10 bg-white p-3 shadow-xl'><FaTooth className='text-3xl text-pink-500'></FaTooth></div>
                                 <div className="card-body">
                                     <h2 className="card-title">{sliced.name}</h2>
-                                    <div className="card-actions justify-between">
+                                    <p className='text-start font-semibold text-teal-600'>${sliced.price}</p>
+                                    <p className='text-start'>
+                                        {
+                                            sliced.details.length > 100 ?
+                                                <>
+                                                    {sliced.details.slice(0, 100) + '...'}
+                                                </>
+
+                                                :
+                                                <>
+                                                    {sliced.details}
+                                                </>
+                                        }
+                                    </p>
+                                    <div className="card-actions flex justify-between">
                                         <div className='pt-3'>
                                             <ReactStars
                                                 size={25}
