@@ -25,11 +25,13 @@ const ServiceDetails = () => {
             </div>
             {/* Reviews section */}
             <div className='my-10 mx-5'>
-                <h2 className='text-2xl'>Kind Words From Patients</h2>
-                <Reviews service={service}></Reviews>
+                <h2 className='text-5xl font-semibold'>Kind Words From <span className='text-teal-500 text-bold'>Patients</span></h2>
+                <div className='py-8'>
+                    <Reviews service={service}></Reviews>
+                </div>
             </div>
             <div className='my-10 mx-5'>
-                <h2 className='text-2xl'>We Welcome Your Opinion!</h2>
+                <h2 className='text-6xl font-semibold'>We Welcome Your <span className='text-teal-500 text-bold'>Opinion!</span></h2>
                 <AddReviews service={service}></AddReviews>
             </div>
         </div>

@@ -19,9 +19,10 @@ const AddReviews = () => {
 
         console.log(newReview)
 
-        // if (email === null) {
-        //     alert('You have to login first')
-        // }
+        if (email === null) {
+            alert('You have to login first')
+            return;
+        }
 
         fetch(`http://localhost:5000/reviews`, {
             method: 'POST',
