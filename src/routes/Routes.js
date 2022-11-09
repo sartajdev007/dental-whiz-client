@@ -3,9 +3,12 @@ import Blogs from "../components/Blogs/Blogs";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
+import MyReviews from "../components/Reviews/MyReviews";
+import AddServices from "../components/Services/AddServices";
 import ServiceDetails from "../components/Services/ServiceDetails";
 import Services from "../components/Services/Services";
 import Main from "../layout/Main";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +40,14 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/addservices',
+                element: <PrivateRoutes><AddServices></AddServices></PrivateRoutes>
+            },
+            {
+                path: '/myreviews',
+                element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
             },
         ]
     }
