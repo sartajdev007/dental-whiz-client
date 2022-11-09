@@ -18,9 +18,7 @@ const UpdateReview = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     alert('Review updated')
-                    console.log(data);
                 }
-
             })
     }
 

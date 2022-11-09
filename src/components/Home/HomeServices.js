@@ -16,7 +16,7 @@ const HomeServices = () => {
     return (
         <div className='my-10 mx-5'>
             <div>
-                <h1 className='text-5xl text-teal-400 font-bold'>Committed to Bring <br /> <span className='text-fuchsia-600'>Happiness</span></h1>
+                <h1 className='text-5xl font-bold'>Committed to Bring <br /> <span className=' text-teal-400'>Happiness</span></h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-3'>
                 {
