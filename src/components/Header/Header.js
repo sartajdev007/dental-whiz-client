@@ -20,8 +20,8 @@ const Header = () => {
         {
             user?.uid &&
             <>
-                <li><Link>My Reviews</Link></li>
-                <li><Link>Add Services</Link></li>
+                <li><Link to='/myreviews'>My Reviews</Link></li>
+                <li><Link to='/addservices'>Add Services</Link></li>
             </>
         }
     </>
