@@ -16,8 +16,8 @@ const ServiceDetails = () => {
                 </div>
             </div>
             <div className='my-10 w-9/12 mx-auto align-middle'>
-                <h1 className='text-5xl'>What is <span className='text-teal-500 text-bold'>{service.name}</span>?</h1>
-                <p className='pt-6 text-start text-2xl'>{service.details}</p>
+                <h1 className='text-5xl font-bold'>What is <span className='text-teal-500 text-bold'>{service.name}</span>?</h1>
+                <p className='pt-6 text-start text-2xl font-semibold'>{service.details}</p>
             </div>
         </div>
     );
