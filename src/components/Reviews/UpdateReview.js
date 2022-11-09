@@ -7,7 +7,6 @@ const UpdateReview = () => {
 
     const handleUpdateReview = event => {
         event.preventDefault();
-        // console.log(user);
         fetch(`http://localhost:5000/reviews/${storedReview._id}`, {
             method: 'PUT',
             headers: {
