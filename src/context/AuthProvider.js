@@ -18,7 +18,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUserProfile = (profile) => {
-        setLoading(true)
         return updateProfile(auth.currentUser, profile)
     }
 
@@ -49,14 +48,13 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        user, loading, logOut, createUser, logIn, googleLogin, updateUserProfile
+        user, loading, createUser, logIn, googleLogin, updateUserProfile, logOut,
     }
 
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
         </AuthContext.Provider>
-
     );
 };
 

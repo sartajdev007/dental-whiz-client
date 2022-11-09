@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import AuthProvider, { AuthContext } from '../../context/AuthProvider';
+import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
-import Review from './Review';
+import MyReviewCard from './MyReviewCard';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext)
-
+    const [myReview, setMyReview] = useState([])
     const reviews = useLoaderData()
-    console.log(reviews)
     useTitle('My Reviews')
 
     return (
@@ -21,9 +20,12 @@ const MyReviews = () => {
                     </div>
                 </div>
             </div>
-            <div className='my-10 mx-5'>
+            <div className='my-10 mx-5 grid grid-cols-1 md:grid-cols-3 gap-2'>
                 {
-                    reviews.filter(rv => rv.email === user.email).map(rv => <Review review={rv}></Review>)
+                    reviews.filter(rv => rv.email === user.email).length === 0 ?
+                        <p className='text-2xl font-bold text-violet-600'>You have no reviews</p>
+                        :
+                        reviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard key={rv._id} review={rv}></MyReviewCard>)
                 }
             </div>
         </div>

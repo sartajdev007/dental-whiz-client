@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
@@ -21,7 +21,7 @@ const AddReviews = () => {
         const name = user?.displayName
         const serviceId = service._id
         const time = new Date()
-        const serviceName = service._name
+        const serviceName = service.name
         const newReview = { review, email, name, serviceId, userImg, serviceName, time }
 
         setAdded(false)
