@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Banner from './Banner';
 import { FaStar, FaStarHalfAlt, FaTooth } from 'react-icons/fa'
 import ReactStars from 'react-rating-stars-component';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
 
 
 
@@ -28,9 +29,15 @@ const Home = () => {
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-3'>
                     {
-                        sliceServices.map((sliced, index) =>
-                            <div key={sliced._id} className="card my-10 card-compact w-96 bg-base-100 shadow-xl">
-                                <figure className='w-full max-h-64 relative'><img src={sliced.img} alt="" /></figure>
+                        sliceServices.map(sliced =>
+                            <div key={sliced._id} className="card my-10 card-compact w-96 bg-base-100 shadow-xl shadow-purple-300">
+                                <figure className='w-full max-h-64 relative'>
+                                    <PhotoProvider>
+                                        <PhotoView src={sliced.img}>
+                                            <img src={sliced.img} alt="" />
+                                        </PhotoView>
+                                    </PhotoProvider>
+                                </figure>
                                 <div className='absolute top-56 right-10 bg-white p-3 shadow-xl'><FaTooth className='text-3xl text-pink-500'></FaTooth></div>
                                 <div className="card-body">
                                     <h2 className="card-title">{sliced.name}</h2>
@@ -66,7 +73,7 @@ const Home = () => {
                             </div>)
                     }
                 </div>
-                <button className='btn bg-teal-600 border-0'><Link to='/services'>More Services</Link></button>
+                <button className='btn bg-teal-600 border-0'><Link to='/services'>All Services</Link></button>
             </div>
         </div>
     );
