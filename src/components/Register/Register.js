@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/login/login.png'
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const [error, setError] = useState('')
+    useTitle('Register')
 
     const handleSubmit = e => {
         e.preventDefault()

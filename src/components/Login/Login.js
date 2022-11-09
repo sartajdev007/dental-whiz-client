@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/login/login.png'
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const { logIn, googleLogin } = useContext(AuthContext)
     const [error, setError] = useState('')
+    useTitle('login')
+
 
     const handleLogin = e => {
         e.preventDefault()
