@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaTooth, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
@@ -38,7 +38,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link to='/' className="btn btn-ghost normal-case text-2xl">
-                    <span className='text-teal-500 font-bold'>Dental</span><span className='text-fuchsia-500 font-semibold'>Whiz</span>
+                    <span className='pr-1'><FaTooth className='text-fuchsia-500 text-bold'></FaTooth></span><span className='text-teal-500 font-bold'>Dental</span><span className='text-fuchsia-500 font-semibold'>Whiz</span>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
