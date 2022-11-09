@@ -28,14 +28,14 @@ const Register = () => {
             })
     }
 
-    const handleUpdateUserProfile = (name, photo) => {
+    const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
-            photo: photo
+            photoURL: photoURL
         }
         updateUserProfile(profile)
             .then(() => { })
-            .catch(e => console.log(e))
+            .catch(err => console.log(err))
     }
     return (
         <div className="hero w-full my-10">
@@ -44,13 +44,13 @@ const Register = () => {
                     <img className='w-3/4' src={img} alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20 px-1">
-                    <h1 className="text-5xl text-center font-bold">Login now!</h1>
+                    <h1 className="text-5xl text-center font-bold">Sign Up!</h1>
                     <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="name" name='name' placeholder="Your Name" className="input input-bordered" />
+                            <input type="name" name='name' placeholder="Your Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -62,13 +62,13 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
                             <input className="btn bg-teal-500 border-0 hover:bg-teal-400" type="submit" value="Sign Up" />

@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
 
     const navMenu = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/services'>Services</Link></li>
         <li><Link to='/blogs'>Blog</Link></li>
+        {
+            user?.uid &&
+            <>
+                <li><Link>My Reviews</Link></li>
+                <li><Link>Add Services</Link></li>
+            </>
+        }
     </>
 
     return (
@@ -30,8 +47,30 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="btn bg-fuchsia-500 border-0 hover:bg-fuchsia-400 mr-2">Login</Link>
-                <Link to='/register' className="btn bg-teal-600 border-0 hover:bg-teal-500">Sign Up</Link>
+                <>
+                    {
+                        user?.uid ?
+                            <>
+                                <span className='text-black pr-3'>{user?.displayName}</span>
+                                {
+                                    user?.photoURL ?
+                                        <img title={user.displayName} className='mr-2 rounded-full' style={{ height: '40px' }} src={user?.photoURL} alt='' />
+                                        :
+                                        <>
+                                            <FaUserAlt className='mr-2 text-teal-500'></FaUserAlt>
+                                        </>
+                                }
+                                <button onClick={handleLogOut} className="btn bg-red-600 border-0">Log Out</button>
+                            </>
+                            :
+                            <>
+                                <Link to='/login' className="btn bg-fuchsia-500 border-0 hover:bg-fuchsia-400 mr-2">Login</Link>
+                                <Link to='/register' className="btn bg-teal-600 border-0 hover:bg-teal-500">Sign Up</Link>
+                            </>
+                    }
+                </>
+
+
             </div>
         </div>
     );
