@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ServiceContext } from '../Services/ServiceDetails';
 import Review from './Review';
 
-const Reviews = () => {
+const Reviews = ({ id }) => {
+    const { added } = useContext(ServiceContext)
     const [reviews, setReviews] = useState([])
 
+    console.log(id)
 
     useEffect(() => {
         fetch('http://localhost:5000/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [])
+    }, [added])
 
     return (
         <div className='grid grid-cols-1 gap-3 md:grid-cols-3'>
             {
-                reviews.map(review => <Review
-                    key={review._id}
-                    review={review}
-                >
-                </Review>)
+                reviews.filter(dt => dt.serviceId === id).length === 0 ?
+                    <p className='text-2xl font-bold text-violet-600'>There are no reviews</p> :
+                    reviews.filter(dt => dt.serviceId === id).map(review => <Review
+                        key={review._id}
+                        review={review}
+                    >
+                    </Review>)
             }
         </div>
     );

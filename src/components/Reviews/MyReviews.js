@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import AuthProvider, { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
+import Review from './Review';
 
 const MyReviews = () => {
+    const { user } = useContext(AuthContext)
+
+    const reviews = useLoaderData()
+    console.log(reviews)
+    useTitle('My Reviews')
+
     return (
         <div>
             <div className="hero h-96" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")` }}>
@@ -10,6 +20,11 @@ const MyReviews = () => {
                         <h1 className="mb-5 text-7xl font-bold underline underline-offset-8 decoration-fuchsia-700">My Reviews</h1>
                     </div>
                 </div>
+            </div>
+            <div className='my-10 mx-5'>
+                {
+                    reviews.filter(rv => rv.email === user.email).map(rv => <Review review={rv}></Review>)
+                }
             </div>
         </div>
     );

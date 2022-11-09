@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import AddReviews from '../Reviews/AddReviews';
 import Reviews from '../Reviews/Reviews';
 
+export const ServiceContext = createContext()
+
 const ServiceDetails = () => {
+    const [added, setAdded] = useState(false)
     const service = useLoaderData()
+
     useTitle('Service Details')
 
     return (
-        <div>
+        <ServiceContext.Provider value={{ added, setAdded }}>
             <div>
                 <div className="hero min-h-screen" style={{ backgroundImage: `url(${service.banner_img})` }}>
                     <div className="hero-overlay bg-opacity-60 bg-teal-400"></div>
@@ -29,14 +33,14 @@ const ServiceDetails = () => {
             <div className='my-10 mx-5'>
                 <h2 className='text-5xl font-semibold'>Kind Words From <span className='text-teal-500 text-bold'>Patients</span></h2>
                 <div className='py-8'>
-                    <Reviews service={service}></Reviews>
+                    <Reviews id={service._id} service={service}></Reviews>
                 </div>
             </div>
             <div className='my-10 mx-5'>
                 <h2 className='text-6xl font-semibold'>We Welcome Your <span className='text-teal-500 text-bold'>Opinion!</span></h2>
                 <AddReviews service={service}></AddReviews>
             </div>
-        </div>
+        </ServiceContext.Provider>
     );
 };
 
