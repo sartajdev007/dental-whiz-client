@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddReviews = () => {
     const { user } = useContext(AuthContext)
@@ -12,7 +14,7 @@ const AddReviews = () => {
         const form = e.target
         const review = form.review.value
         const email = user?.email || 'unregistered'
-        const userImg = user?.photoURL || <FaUser></FaUser>
+        const userImg = user?.photoURL
         const name = user?.displayName
         const serviceId = service._id
         const newReview = { review, email, name, serviceId, userImg }
@@ -36,33 +38,30 @@ const AddReviews = () => {
                 console.log(data)
                 if (data.acknowledged) {
                     form.reset()
-                    alert('review added successfully')
+                    toast("Thanks For Your Review")
                 }
             })
             .catch(err => console.error(err))
 
-
-
     }
 
     return (
-        <div>
-            <form onSubmit={handleAddReview}>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">Email</span>
-                    </label>
-                    <input type="email" name='email' placeholder="email" className="input input-bordered" defaultValue={user?.email} readOnly />
-                </div>
-                <div className="form-control">
-                    <label className='label'>
-                        <span className="label-text">Review</span>
-                    </label>
-                    <textarea name="review" id="" cols="40" rows="5" className="textarea textarea-bordered"></textarea>
-                </div>
-                <button type="submit" className='btn btn-ghost'>Submit Review</button>
-            </form>
-        </div>
+        <form onSubmit={handleAddReview} className='mx-auto max-w-xl'>
+            <div className="form-control">
+                <label className="label">
+                    <span className="label-text">Email</span>
+                </label>
+                <input type="email" name='email' placeholder="email" className="input input-bordered" defaultValue={user?.email} readOnly />
+            </div>
+            <div className="form-control">
+                <label className='label'>
+                    <span className="label-text">Review</span>
+                </label>
+                <textarea name="review" id="" cols="20" rows="3" className="textarea textarea-bordered"></textarea>
+            </div>
+            <button type="submit" className='btn bg-teal-500 border-0 hover:bg-teal-400 mt-5'>Submit Review</button>
+            <ToastContainer />
+        </form>
     );
 };
 

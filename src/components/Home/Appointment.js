@@ -8,7 +8,7 @@ const Appointment = () => {
     const [startDate, setStartDate] = useState(new Date());
 
     return (
-        <div className="hero w-full my-10">
+        <div className="hero w-full my-10 mx-auto">
             <div className="hero-content grid gap-10 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img className='w-3/4' src={img} alt="" />

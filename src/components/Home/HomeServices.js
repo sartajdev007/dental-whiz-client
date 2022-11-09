@@ -65,7 +65,7 @@ const HomeServices = () => {
                         </div>)
                 }
             </div>
-            <button className='btn bg-teal-600 border-0'><Link to='/services'>All Services</Link></button>
+            <button className='btn bg-teal-600 border-0 hover:bg-teal-400'><Link to='/services'>All Services</Link></button>
         </div >
     );
 };

@@ -6,7 +6,7 @@ const Review = ({ review }) => {
         <div className="card w-96  bg-teal-500  shadow-xl">
             <div className="avatar">
                 <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={review.userImg} alt='' />
+                    <img src={review.userImg} alt='user' />
                 </div>
             </div>
             <div className="card-body">
