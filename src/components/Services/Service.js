@@ -34,15 +34,19 @@ const Service = ({ service }) => {
                 </p>
                 <div className="card-actions flex justify-between">
                     <div className='pt-3'>
-                        <ReactStars
-                            size={25}
-                            count={5}
-                            isHalf={true}
-                            value={service.ratings}
-                            edit={false}
-                            halfIcon={<FaStarHalfAlt></FaStarHalfAlt>}
-                            fullIcon={<FaStar></FaStar>}
-                            activeColor="#ffd700" />
+                        {
+                            service.ratings ? <ReactStars
+                                size={25}
+                                count={5}
+                                isHalf={true}
+                                value={service.ratings}
+                                edit={false}
+                                halfIcon={<FaStarHalfAlt></FaStarHalfAlt>}
+                                fullIcon={<FaStar></FaStar>}
+                                activeColor="#ffd700" />
+                                :
+                                <p>No Ratings</p>
+                        }
                     </div>
                     <button className="btn bg-fuchsia-500 border-0 hover:bg-fuchsia-400"><Link to={`/services/${service._id}`}>See Details</Link></button>
                 </div>

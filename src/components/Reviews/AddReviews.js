@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { FaUser } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddReviews = () => {
     const { user } = useContext(AuthContext)
+    const [error, setError] = useState('')
     const service = useLoaderData()
 
     const handleAddReview = e => {
@@ -19,30 +19,31 @@ const AddReviews = () => {
         const serviceId = service._id
         const newReview = { review, email, name, serviceId, userImg }
 
-        console.log(newReview)
-
-        if (email === null) {
-            alert('You have to login first')
-            return;
-        }
-
-        fetch(`http://localhost:5000/reviews`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newReview)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    form.reset()
-                    toast("Thanks For Your Review")
-                }
+        // console.log(newReview)
+        console.log(email)
+        if (email !== 'unregistered') {
+            console.log(email)
+            fetch(`http://localhost:5000/reviews`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(newReview)
             })
-            .catch(err => console.error(err))
-
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.acknowledged) {
+                        form.reset()
+                        toast("Thanks For Your Review")
+                    }
+                })
+                .catch(err => console.error(err))
+        }
+        else {
+            toast('You have to login first')
+            setError(`Please`)
+        }
     }
 
     return (
@@ -59,6 +60,7 @@ const AddReviews = () => {
                 </label>
                 <textarea name="review" id="" cols="20" rows="3" className="textarea textarea-bordered"></textarea>
             </div>
+            {error ? <div className='pt-5'>{error} <Link to='/login' className='font-semibold text-teal-500 hover:text-teal-400'>Login</Link> first</div> : null}
             <button type="submit" className='btn bg-teal-500 border-0 hover:bg-teal-400 mt-5'>Submit Review</button>
             <ToastContainer />
         </form>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FaStar, FaStarHalfAlt, FaTooth } from 'react-icons/fa'
+import { FaAngleDoubleRight, FaStar, FaStarHalfAlt, FaTooth } from 'react-icons/fa'
 import ReactStars from 'react-rating-stars-component';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
@@ -48,15 +48,19 @@ const HomeServices = () => {
                                 </p>
                                 <div className="card-actions flex justify-between">
                                     <div className='pt-3'>
-                                        <ReactStars
-                                            size={25}
-                                            count={5}
-                                            isHalf={true}
-                                            value={sliced.ratings}
-                                            edit={false}
-                                            halfIcon={<FaStarHalfAlt></FaStarHalfAlt>}
-                                            fullIcon={<FaStar></FaStar>}
-                                            activeColor="#ffd700" />
+                                        {
+                                            sliced.ratings ? <ReactStars
+                                                size={25}
+                                                count={5}
+                                                isHalf={true}
+                                                value={sliced.ratings}
+                                                edit={false}
+                                                halfIcon={<FaStarHalfAlt></FaStarHalfAlt>}
+                                                fullIcon={<FaStar></FaStar>}
+                                                activeColor="#ffd700" />
+                                                :
+                                                <p>No Ratings</p>
+                                        }
                                     </div>
                                     <button className="btn bg-fuchsia-500 border-0 hover:bg-fuchsia-400">
                                         <Link to={`/services/${sliced._id}`}>See Details</Link></button>
@@ -65,7 +69,7 @@ const HomeServices = () => {
                         </div>)
                 }
             </div>
-            <button className='btn bg-teal-600 border-0 hover:bg-teal-400'><Link to='/services'>All Services</Link></button>
+            <button className='btn bg-teal-600 border-0 hover:bg-teal-400'><Link to='/services'>All Services</Link> <span className='ml-1 pt-1'><FaAngleDoubleRight></FaAngleDoubleRight></span></button>
         </div >
     );
 };
