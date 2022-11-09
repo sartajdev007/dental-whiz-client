@@ -26,8 +26,11 @@ const ServiceDetails = () => {
             {/* Reviews section */}
             <div className='my-10 mx-5'>
                 <h2 className='text-2xl'>Kind Words From Patients</h2>
-                <AddReviews service={service}></AddReviews>
                 <Reviews service={service}></Reviews>
+            </div>
+            <div className='my-10 mx-5'>
+                <h2 className='text-2xl'>We Welcome Your Opinion!</h2>
+                <AddReviews service={service}></AddReviews>
             </div>
         </div>
     );

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { FaUser } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
@@ -11,9 +12,10 @@ const AddReviews = () => {
         const form = e.target
         const review = form.review.value
         const email = user?.email || 'unregistered'
+        const userImg = user?.photoURL || <FaUser></FaUser>
         const name = user?.displayName
         const serviceId = service._id
-        const newReview = { review, email, name, serviceId }
+        const newReview = { review, email, name, serviceId, userImg }
 
         console.log(newReview)
 

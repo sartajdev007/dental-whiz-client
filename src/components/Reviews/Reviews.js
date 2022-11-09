@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import Review from './Review';
 
-const Reviews = ({ service }) => {
+const Reviews = () => {
     const [reviews, setReviews] = useState([])
 
 
@@ -13,11 +14,11 @@ const Reviews = ({ service }) => {
     return (
         <div>
             {
-                reviews.map(review => {
-                    return if (review.serviceId === service._id) {
-
-                    }
-                })
+                reviews.map(review => <Review
+                    key={review._id}
+                    review={review}
+                >
+                </Review>)
             }
         </div>
     );
