@@ -3,12 +3,32 @@ import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import MyReviewCard from './MyReviewCard';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext)
     const [myReview, setMyReview] = useState([])
     const reviews = useLoaderData()
     useTitle('My Reviews')
+
+    const handleDelete = _id => {
+        const proceed = window.confirm('Are you sure to delete this review?')
+        if (proceed) {
+            fetch(`http://localhost:5000/reviews/${_id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        toast('Review Deleted')
+                        const remaining = reviews.filter(rvs => rvs._id !== _id)
+                        setMyReview(remaining)
+                    }
+                })
+        }
+    }
 
     return (
         <div>
@@ -25,8 +45,15 @@ const MyReviews = () => {
                     reviews.filter(rv => rv.email === user.email).length === 0 ?
                         <p className='text-2xl font-bold text-violet-600'>You have no reviews</p>
                         :
-                        reviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard key={rv._id} review={rv}></MyReviewCard>)
+                        reviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard
+                            key={rv._id}
+                            myRv={rv}
+                            handleDelete={handleDelete}
+                        >
+                        </MyReviewCard>
+                        )
                 }
+                <ToastContainer />
             </div>
         </div>
     );
