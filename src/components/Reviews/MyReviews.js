@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import MyReviewCard from './MyReviewCard';
@@ -8,14 +7,21 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext)
-    const [myReview, setMyReview] = useState([])
-    const reviews = useLoaderData()
+    const [myReviews, setMyReviews] = useState([])
     useTitle('My Reviews')
+    useEffect(() => {
+        fetch('https://dental-whiz-server.vercel.app/reviews')
+            .then(res => res.json())
+            .then(data => {
+                setMyReviews(data)
+            })
+    }, [])
+
 
     const handleDelete = _id => {
         const proceed = window.confirm('Are you sure to delete this review?')
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${_id}`, {
+            fetch(`https://dental-whiz-server.vercel.app/reviews/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -23,8 +29,8 @@ const MyReviews = () => {
                     console.log(data)
                     if (data.deletedCount > 0) {
                         toast('Review Deleted')
-                        const remaining = reviews.filter(rvs => rvs._id !== _id)
-                        setMyReview(remaining)
+                        const remaining = myReviews.filter(rvs => rvs._id !== _id)
+                        setMyReviews(remaining)
                     }
                 })
         }
@@ -42,10 +48,10 @@ const MyReviews = () => {
             </div>
             <div className='my-10 mx-5 grid grid-cols-1 md:grid-cols-3 gap-2'>
                 {
-                    reviews.filter(rv => rv.email === user.email).length === 0 ?
+                    myReviews.filter(rv => rv.email === user.email).length === 0 ?
                         <p className='text-2xl font-bold text-violet-600'>You have no reviews</p>
                         :
-                        reviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard
+                        myReviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard
                             key={rv._id}
                             myRv={rv}
                             handleDelete={handleDelete}

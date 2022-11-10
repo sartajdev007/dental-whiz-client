@@ -16,7 +16,7 @@ const AddServices = () => {
 
         console.log(newService)
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://dental-whiz-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

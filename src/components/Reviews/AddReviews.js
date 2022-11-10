@@ -27,7 +27,7 @@ const AddReviews = () => {
         setAdded(false)
         if (email !== 'unregistered') {
             console.log(email)
-            fetch(`http://localhost:5000/reviews`, {
+            fetch(`https://dental-whiz-server.vercel.app/reviews`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

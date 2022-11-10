@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/login/login.png'
 import useTitle from '../../hooks/useTitle';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -22,6 +23,7 @@ const Register = () => {
                 const user = result.user
                 console.log(user)
                 form.reset()
+                toast('Congrats!!You are now one of us!')
                 handleUpdateUserProfile(name, photoURL)
             })
             .catch(error => {
@@ -29,7 +31,6 @@ const Register = () => {
                 setError(error.message)
             })
     }
-
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
@@ -39,6 +40,7 @@ const Register = () => {
             .then(() => { })
             .catch(err => console.log(err))
     }
+
     return (
         <div className="hero w-full my-10">
             <div className="hero-content grid gap-10 md:grid-cols-2 flex-col lg:flex-row">
@@ -78,8 +80,8 @@ const Register = () => {
                         <p className='text-red-500 font-semibold'>
                             {error}
                         </p>
+                        <ToastContainer />
                     </form>
-
                     <p className='text-center'>Already Joined?! <Link className='text-teal-500 font-bold' to='/login'>Sign In</Link></p>
                 </div>
             </div>

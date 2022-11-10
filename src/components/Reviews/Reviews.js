@@ -6,10 +6,8 @@ const Reviews = ({ id }) => {
     const { added } = useContext(ServiceContext)
     const [reviews, setReviews] = useState([])
 
-    console.log(id)
-
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://dental-whiz-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [added])

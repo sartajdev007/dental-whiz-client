@@ -25,12 +25,12 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/services')
+                loader: () => fetch('https://dental-whiz-server.vercel.app/services')
             },
             {
                 path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://dental-whiz-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/blogs',
@@ -51,12 +51,11 @@ export const router = createBrowserRouter([
             {
                 path: '/myreviews',
                 element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>,
-                loader: () => fetch('http://localhost:5000/reviews')
             },
             {
                 path: '/updatereview/:id',
                 element: <PrivateRoutes><UpdateReview></UpdateReview></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`)
+                loader: ({ params }) => fetch(`https://dental-whiz-server.vercel.app/reviews/${params.id}`)
             },
         ]
     }
