@@ -1,4 +1,4 @@
-# TechnoGuy Learning Website
+# DentalWhiz Service Review Website
 
 
 ### Live Link: 
