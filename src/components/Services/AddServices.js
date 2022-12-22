@@ -28,7 +28,7 @@ const AddServices = () => {
                 console.log(data)
                 if (data.acknowledged) {
                     form.reset()
-                    toast("Thanks For Your Review")
+                    toast("Thanks For Your Service request")
                 }
             })
             .catch(err => console.log(err))
@@ -47,7 +47,7 @@ const AddServices = () => {
                 </div>
             </div>
             <div>
-                <form onSubmit={handleAddService} className="card-body">
+                <form onSubmit={handleAddService} className="card-body w-[600px] flex flex-col mx-auto shadow-lg my-10 bg-base-100 rounded-md">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Service Name</span>

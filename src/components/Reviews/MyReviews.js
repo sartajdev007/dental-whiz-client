@@ -49,7 +49,7 @@ const MyReviews = () => {
             <div className='my-10 mx-5 grid grid-cols-1 md:grid-cols-3 gap-2'>
                 {
                     myReviews.filter(rv => rv.email === user.email).length === 0 ?
-                        <p className='text-2xl font-bold text-violet-600'>You have no reviews</p>
+                        <p className='text-3xl font-bold text-red-600 italic'>You have no reviews</p>
                         :
                         myReviews.filter(rv => rv.email === user.email).map(rv => <MyReviewCard
                             key={rv._id}

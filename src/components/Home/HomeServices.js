@@ -18,7 +18,7 @@ const HomeServices = () => {
             <div>
                 <h1 className='text-5xl font-bold'>Committed to Bring <br /> <span className=' text-teal-400'>Happiness</span></h1>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-3'>
+            <div className='grid grid-cols-1 justify-items-center md:grid-cols-3'>
                 {
                     sliceServices.map(sliced =>
                         <div key={sliced._id} className="card my-10 card-compact w-96 bg-base-100 shadow-xl shadow-purple-300">
