@@ -4,9 +4,10 @@ import useTitle from '../../hooks/useTitle';
 import MyReviewCard from './MyReviewCard';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loader from '../Loader/Loader';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext)
+    const { user, loading } = useContext(AuthContext)
     const [myReviews, setMyReviews] = useState([])
     useTitle('My Reviews')
     useEffect(() => {
@@ -17,6 +18,9 @@ const MyReviews = () => {
             })
     }, [])
 
+    if (loading) {
+        return <Loader></Loader>
+    }
 
     const handleDelete = _id => {
         const proceed = window.confirm('Are you sure to delete this review?')

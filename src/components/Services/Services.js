@@ -1,11 +1,20 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import Service from './Service';
+import { AuthContext } from '../../context/AuthProvider';
+import Loader from '../Loader/Loader';
 
 const Services = () => {
+    const { loading } = useContext(AuthContext)
     const services = useLoaderData()
     useTitle('Services')
+
+    if (loading) {
+        return <Loader></Loader>
+    }
+
 
     return (
         <div>

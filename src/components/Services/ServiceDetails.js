@@ -1,6 +1,8 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 import useTitle from '../../hooks/useTitle';
+import Loader from '../Loader/Loader';
 import AddReviews from '../Reviews/AddReviews';
 import Reviews from '../Reviews/Reviews';
 
@@ -8,9 +10,15 @@ export const ServiceContext = createContext()
 
 const ServiceDetails = () => {
     const [added, setAdded] = useState(false)
+    const { loading } = useContext(AuthContext)
     const service = useLoaderData()
 
     useTitle('Service Details')
+    if (loading) {
+        return <Loader></Loader>
+    }
+
+
 
     return (
         <ServiceContext.Provider value={{ added, setAdded }}>

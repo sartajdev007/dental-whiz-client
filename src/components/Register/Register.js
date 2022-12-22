@@ -4,9 +4,10 @@ import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/login/login.png'
 import useTitle from '../../hooks/useTitle';
 import { toast, ToastContainer } from 'react-toastify';
+import Loader from '../Loader/Loader';
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const { createUser, updateUserProfile, loading } = useContext(AuthContext)
     const [error, setError] = useState('')
     useTitle('Register')
 
@@ -39,6 +40,10 @@ const Register = () => {
         updateUserProfile(profile)
             .then(() => { })
             .catch(err => console.log(err))
+    }
+
+    if (loading) {
+        return <Loader></Loader>
     }
 
     return (

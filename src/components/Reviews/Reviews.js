@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
+import Loader from '../Loader/Loader';
 import { ServiceContext } from '../Services/ServiceDetails';
 import Review from './Review';
 
 const Reviews = ({ id }) => {
     const { added } = useContext(ServiceContext)
+    const { loading } = useContext(AuthContext)
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
@@ -11,6 +14,13 @@ const Reviews = ({ id }) => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [added])
+
+    if (loading) {
+        return <Loader></Loader>
+    }
+
+
+
 
     return (
         <div className='grid grid-cols-1 gap-3 md:grid-cols-3'>

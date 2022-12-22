@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import img from '../../assets/login/login.png'
 import useTitle from '../../hooks/useTitle';
+import Loader from '../Loader/Loader';
 
 const Login = () => {
-    const { logIn, googleLogin } = useContext(AuthContext)
+    const { logIn, googleLogin, loading } = useContext(AuthContext)
     const [error, setError] = useState('')
     useTitle('login')
     const location = useLocation()
@@ -44,6 +45,12 @@ const Login = () => {
                 console.error(error)
             })
     }
+
+    if (loading) {
+        return <Loader></Loader>
+    }
+
+
 
     return (
         <div className="hero w-full my-10">
